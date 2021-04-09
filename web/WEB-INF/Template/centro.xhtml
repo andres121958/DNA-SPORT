@@ -45,7 +45,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="#{usuarioSesion.usuariosRegistrados}" var="usuario">
+                                            <c:forEach items="#{userRDView.usuariosRegistrados}" var="usuario">
                                                 <tr>
                                                     <td>#{usuario.primerNombre} #{usuario.segundoNombre}</td>
                                                     <td>#{usuario.primerApellido} #{usuario.segundoApellido}</td>
@@ -55,7 +55,7 @@
                                                     <td>#{usuario.documento}</td>
                                                     <td>
                                                         <h:commandButton value="Eliminar" class="btn btn-danger" 
-                                                                         action="#{usuarioSesion.eliminarUsuario(usuario)}"/>
+                                                                         action="#{userRDView.eliminarUsuario(usuario)}"/>
                                                     </td>
                                                 </tr>
                                             </c:forEach>                                                                                                                             
@@ -87,16 +87,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="#{usuarioSesion.usuariosRegistrados}" var="usuario">
+                                            <c:forEach items="#{userRDView.usuariosRegistrados}" var="usuario">
                                                 <tr>
                                                     <td>#{usuario.primerNombre} #{usuario.segundoNombre}</td>
                                                     <td>#{usuario.primerApellido} #{usuario.segundoApellido}</td>
                                                     <td>#{usuario.correo}</td>
                                                     <td>#{usuario.telefono}</td>
                                                     <td>#{usuario.tipoDocumento}</td>
-                                                    <td>#{usuario.documento}</td>                                                        
+                                                    <td>#{usuario.documento}</td>
                                                 </tr>
-                                            </c:forEach>                                                                                                                             
+                                            </c:forEach>                                                                                                                            
                                         </tbody>
                                         <tfoot>
                                             <tr>

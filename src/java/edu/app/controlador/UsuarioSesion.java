@@ -15,8 +15,7 @@ import javax.faces.context.FacesContext;
 public class UsuarioSesion implements Serializable {
 
     @EJB
-    UsuarioFacadeLocal usuarioFacadeLocal;
-
+    private UsuarioFacadeLocal usuarioFacadeLocal;
     private String verificar = "";
     private String correo = "";
     private String contrasenia = "";
@@ -30,15 +29,14 @@ public class UsuarioSesion implements Serializable {
         usuariosRegistrados.addAll(usuarioFacadeLocal.findAll());
     }
 
-    public void eliminarUsuario(Usuario usuario) {
+    /*public void eliminarUsuario(Usuario usuario) {
         try {
             usuarioFacadeLocal.remove(usuario);
             usuariosRegistrados.remove(usuario);
         } catch (Exception e) {
             System.out.println("edu.app.controlador.LoginView.eliminarUsuario()" + e.getMessage());
         }
-    }
-
+    }*/
     public UsuarioSesion() {
     }
 
@@ -121,7 +119,13 @@ public class UsuarioSesion implements Serializable {
     public void setUsuariosRegistrados(ArrayList<Usuario> usuariosRegistrados) {
         this.usuariosRegistrados = usuariosRegistrados;
     }
-    
-    
+
+    public UsuarioFacadeLocal getUsuarioFacadeLocal() {
+        return usuarioFacadeLocal;
+    }
+
+    public void setUsuarioFacadeLocal(UsuarioFacadeLocal usuarioFacadeLocal) {
+        this.usuarioFacadeLocal = usuarioFacadeLocal;
+    }
 
 }

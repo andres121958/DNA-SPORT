@@ -120,12 +120,9 @@ public class Usuario implements Serializable {
     }
 
     public Usuario(Integer idUsuario) {
-        this.idUsuario = 49;
+        this.idUsuario = idUsuario;
     }
 
-    /*public Usuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }*/
     public Usuario(Integer idUsuario, String primerNombre, String primerApellido, String direccion, String telefono, String correo, String contrasenia, String correoAlternativo, String tipoDocumento, String documento) {
         this.idUsuario = idUsuario;
         this.primerNombre = primerNombre;
