@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Usuario</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/fontawesome-free/css/all.min.css"/>
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+        <!-- Tempusdominus Bbootstrap 4 -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"/>
+        <!-- icheck bootstrap -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/icheck-bootstrap/icheck-bootstrap.min.css"/>
+        <!-- JQVMap -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/jqvmap/jqvmap.min.css"/>
+        <!-- Theme style -->
+        <link rel="stylesheet" href="#{request.contextPath}/dist/css/adminlte.min.css"/>
+        <!-- overlayScrollbars -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"/>
+        <!-- Daterange picker -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/daterangepicker/daterangepicker.css"/>
+        <!-- summernote -->
+        <link rel="stylesheet" href="#{request.contextPath}/plugins/summernote/summernote-bs4.css"/>
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"/>
+        <!-- Icono -->
+        <link rel="icon" href="#{request.contextPath}/dist/img/dna.PNG"/>
+        <!-- DataTables -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/autofill/2.3.5/css/autoFill.bootstrap4.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.5.3/css/colReorder.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.0.3/css/dataTables.dateTime.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.3.2/css/fixedColumns.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.8/css/fixedHeader.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.6.1/css/keyTable.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/2.0.3/css/scroller.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchbuilder/1.0.1/css/searchBuilder.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.2.2/css/searchPanes.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.bootstrap4.min.css"/>
+        <!--        <link rel="stylesheet" href="#{request.contextPath}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"/>
+                <link rel="stylesheet" href="#{request.contextPath}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"/>
+                <link rel="stylesheet" href="#{request.contextPath}/plugins/datatables-botones/buttons.dataTables.min.css"/>-->
+        <script src="#{request.contextPath}/dist/js/tableToExcel.js"/>
+    </h:head>
+
+    <h:body class="hold-transition sidebar-mini layout-fixed">
+        <div class="wrapper">
+            <ui:insert name="cabecera">
+                <ui:include src="cabecera.xhtml"></ui:include>
+            </ui:insert>
+
+            <ui:insert name="menuDesplegable">
+                <ui:include src="menuDesplegable.xhtml"></ui:include>
+            </ui:insert>
+
+            <ui:insert name="centro">
+                <ui:include src="centro.xhtml"></ui:include>
+            </ui:insert>
+
+            <ui:insert name="pieDePagina">
+                <ui:include src="pieDePagina.xhtml"></ui:include>
+            </ui:insert>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <!-- jQuery -->
+        <script src="#{request.contextPath}/plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="#{request.contextPath}/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="#{request.contextPath}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/autofill/2.3.5/js/dataTables.autoFill.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/autofill/2.3.5/js/autoFill.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.3/js/dataTables.colReorder.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.2/js/dataTables.fixedColumns.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.6.1/js/dataTables.keyTable.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/scroller/2.0.3/js/dataTables.scroller.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.0.1/js/dataTables.searchBuilder.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.0.1/js/searchBuilder.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.2.2/js/dataTables.searchPanes.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.2.2/js/searchPanes.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="#{request.contextPath}/dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="#{request.contextPath}/dist/js/demo.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="#{request.contextPath}/dist/js/pages/dashboard.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/dist/js/usuario.js"></script>
+        <!-- Page specific script -->
+        <script>
+            $(function () {
+                $("#example1").DataTable({
+                    "responsive": true,
+                    "autoWidth": false,
+                });
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+        </script>
+        <!-- ChartJS -->
+        <script src="#{request.contextPath}/plugins/chart.js/Chart.min.js"></script>
+        <!-- Sparkline -->
+        <script src="#{request.contextPath}/plugins/sparklines/sparkline.js"></script>
+        <!-- JQVMap -->
+        <script src="#{request.contextPath}/plugins/jqvmap/jquery.vmap.min.js"></script>
+        <script src="#{request.contextPath}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="#{request.contextPath}/plugins/jquery-knob/jquery.knob.min.js"></script>
+        <!-- daterangepicker -->
+        <script src="#{request.contextPath}/plugins/moment/moment.min.js"></script>
+        <script src="#{request.contextPath}/plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="#{request.contextPath}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Summernote -->
+        <script src="#{request.contextPath}/plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- overlayScrollbars -->
+        <script src="#{request.contextPath}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="#{request.contextPath}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                bsCustomFileInput.init();
+            });
+        </script>
+        <!-- Exportar Tablas -->
+        <script type="text/javascript" src="#{request.contextPath}/dist/js/exportar.js"></script>
+
+        <script src="#{request.contextPath}/dist/js/pages/dashboard.js"></script>
+
+    </h:body>
+
+</html>

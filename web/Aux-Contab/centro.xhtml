@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">PEDIDOS</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">                                
+                                <li class="breadcrumb-item active">PEDIDOS</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <h:form>
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>PRODUCTO</th>
+                                    <th>NOMBRES</th>
+                                    <th>APELLIDOS</th>
+                                    <th>CANTIDAD</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="#{listadoView.listaPedido}" var="pedidos">
+                                    <tr>
+                                        <td>#{pedidos.idPedido}</td>
+                                        <f:selectItems value="#{listadoView.cantidadProducots}" var="pt" 
+                                                       itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=1 ]'}">
+                                            <td>Pantalón Diadora Mujer</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=2 ]'}">
+                                            <td>Licras Essentials</td>
+                                        </c:if> 
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=3 ]'}">
+                                            <td>Chaqueta Deportiva Gris</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=4 ]'}">
+                                            <td>Leggins deportivo contol abdomen</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=5 ]'}">
+                                            <td>Top deportivo Danfive para niña</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=6 ]'}">
+                                            <td>Sudadera de tipo Tiro para hombre</td>
+                                        </c:if>
+                                        <td><h:inputText value="#{pedidos.nombres}"></h:inputText></td>
+                                        <td><h:inputText value="#{pedidos.apellidos}"></h:inputText></td>
+                                        <td><h:inputText value="#{pedidos.cantidad}"></h:inputText></td>
+                                        <td>
+                                            <h:commandButton class="btn btn-warning" action="#{listadoView.editarPedido(pedidos)}" value="ACTUALIZAR"></h:commandButton>
+                                            <h:commandButton class="btn btn-danger" action="#{listadoView.eliminarPedido(pedidos)}" value="ELIMINAR"></h:commandButton>
+                                        </td>
+                                    </tr>
+                                </c:forEach> 
+                            </tbody>
+                        </table>
+                    </h:form>
+                    <!-- Tabla para Exportar-->
+                    <h:form>
+                        <table id="example" class="table" style="display: none">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>PRODUCTO</th>
+                                    <th>NOMBRES</th>
+                                    <th>APELLIDOS</th>
+                                    <th>CANTIDAD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="#{listadoView.listaPedido}" var="pedidos">
+                                    <tr>
+                                        <td>#{pedidos.idPedido}</td>
+                                        <f:selectItems value="#{listadoView.cantidadProducots}" var="pt" 
+                                                       itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=1 ]'}">
+                                            <td>Pantalón Diadora Mujer</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=2 ]'}">
+                                            <td>Licras Essentials</td>
+                                        </c:if> 
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=3 ]'}">
+                                            <td>Chaqueta Deportiva Gris</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=4 ]'}">
+                                            <td>Leggins deportivo contol abdomen</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=5 ]'}">
+                                            <td>Top deportivo Danfive para niña</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=6 ]'}">
+                                            <td>Sudadera de tipo Tiro para hombre</td>
+                                        </c:if>
+                                        <td>#{pedidos.nombres}</td>
+                                        <td>#{pedidos.apellidos}</td>
+                                        <td>#{pedidos.cantidad}</td>
+                                    </tr>
+                                </c:forEach> 
+                            </tbody>
+                        </table> 
+                    </h:form>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+    </ui:composition>
+</html>

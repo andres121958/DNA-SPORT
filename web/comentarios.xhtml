@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+        <title>DNA SPORT</title>
+        <link rel="icon" href="#{request.contextPath}/dist/img/dna.PNG"/>
+        <link rel="stylesheet" href="#{request.contextPath}/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/dist/css/index.css"/>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <!--Nav superior-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" 
+                        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">DNA SPORT</a>
+                    <ul class="container d-flex justify-content-around navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item ">
+                            <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/index.xhtml">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" p-2 bd-highlight nav-link" href="#{request.contextPath}/qs.xhtml">Quienes Somos</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/comentarios.xhtml">Comentarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/registrarse.xhtml">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/login.xhtml">Iniciar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav><br/>
+            <center><img src="#{request.contextPath}/dist/img/dna.PNG" class="imagen img-responsive"/></center><br/>
+
+            <!--Cuadro de Comentarios-->
+            <c:if test="#{email.respuesta == 2}">
+                <div class="container alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>COMENTARIO ENVIADO.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>    
+            </c:if>
+            <c:if test="#{email.respuesta == 3}">
+                <div class="container alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error: </strong> EMAIL NO ENVIADO.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>           
+            </c:if>
+            <c:if test="#{email.respuesta == 1}">
+                <div class="container alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Recuerde diligenciar todos los campos.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>           
+            </c:if>
+            <center>
+                <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+                    <div class="container">
+                        <div class="card-body">
+                            <CENTER> <h5 class="card-title">DEJANOS TU COMENTARIO</h5></CENTER>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6" style="margin-left: 113px; margin-top: -17px;">
+                                <label for="inputtext4">CORREO ELECTRONICO</label>
+                                <h:inputText value="#{email.subject}"
+                                             validator="#{email.validateEmail}"
+                                             label="from"
+                                             id="from"
+                                             size="20"
+                                             class="form-control">
+                                </h:inputText>
+                                <h:message for="from" style="color:red"/>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">ESCRIBE TU COMENTARIO</label>
+                            <h:inputTextarea id="descr" cols="50" rows="5" value="#{email.descr}" class="form-control" required="required" validator="#{email.validarComentario}">
+                            </h:inputTextarea>
+                            <h:message style="color:red" for="descr"/>
+                        </div>
+
+
+
+
+                        <h:commandButton action="#{email.submitEmail}" value="Enviar"
+                                         id="submit"
+                                         class="btn btn-success"/>
+                        <br></br>
+                    </div>
+                </div>
+                <br></br>
+            </center>
+        </h:form>
+
+
+        <!--Píe de Pagina!-->
+        <nav class="navbar navbar-dark bg-dark">
+            <h2 class="text-white">Siguenos en nuestras redes sociales:</h2><br/>
+            <a class="navbar-brand" href="https://twitter.com/explore">
+                <img src="#{request.contextPath}/dist/img/Twitter.png" width="70" height="50" alt="" loading="lazy"/>
+            </a>
+            <a class="navbar-brand" href="https://www.facebook.com/DNA-SPORT-103126241436545">
+                <img src="#{request.contextPath}/dist/img/Facebook.svg" width="70" height="50" alt="" loading="lazy"/>
+            </a>
+            <a class="navbar-brand" href="https://accounts.google.com/ServiceLogin?service=mailpassive=truerm=falsecontinue=https://mail.google.com/mail/ss=1scc=1ltmpl=defaultltmplcache=2emr=1osid=1#">
+                <img src="#{request.contextPath}/dist/img/Gmail.svg" width="70" height="60" alt="" loading="lazy"/>
+            </a>
+        </nav>
+        <script type="text/javascript" src="#{request.contextPath}/dist/js/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/dist/js/bootstrap.min.js"></script>
+
+    </h:body>
+</html>
+

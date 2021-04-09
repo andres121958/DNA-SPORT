@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+html,
+body {
+    background: url(../img/fondo_siete.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+    font-family: Lato, sans-serif;
+    background-color: #e3e7ea;
+}
+header{
+    height: 70px;
+    background:#f38370;
+    margin-bottom: 50px;
+}

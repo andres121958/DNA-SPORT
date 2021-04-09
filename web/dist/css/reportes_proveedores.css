@@ -1,0 +1,12 @@
+form {
+	position: absolute;
+	top: 4%;
+	left: 28%;
+}
+body {
+	background: url(../img/reporte_inventario.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	
+}

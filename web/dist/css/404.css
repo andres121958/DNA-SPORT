@@ -1,0 +1,59 @@
+body{
+    background: #000;
+}
+@font-face{
+    font-family: VCR;
+    src:url(../assets/fuente1.ttf);
+}
+@font-face{
+    font-family: BREAKFAST;
+    src:url(../assets/fuente2.otf);
+}
+.titulo{
+    font-size: 100px;
+    color: blue;
+    text-align: center;
+    margin-left: 145px;
+    font-family: VCR;
+}
+#particles-js{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+.contenedor_titulo{
+    position: relative;
+    z-index: 99;
+    width: 800px;
+    height: 300px;
+    border: solid 1px blue;
+    left: 270px;
+    background: white;
+    border-radius: 10px;
+    margin-top: 110px;
+}
+.descripcion{
+    font-size: 28px;
+    margin-left: 82px;
+    font-family: BREAKFAST;
+}
+.contenedor_descripcion{
+    margin-top: -12px;
+}
+.login_btn {
+    width: 100%;
+    background: #2b44c0 !important;
+    color: white !important;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+.contenedor_boton{
+    border-radius: 10px;
+    width: 140px;
+    text-align: center;
+    margin-left: 323px;
+    margin-top: 41px;
+}

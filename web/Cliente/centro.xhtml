@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+        <div class="container content-wrapper">
+            <div class="container" style="width: 900px;">
+                <h:form>
+                    <div class="row">
+                        <div class="col">
+                            <label for="nombres">Ingrese sus Nombres</label>
+                            <h:inputText id="nombres" value="#{listadoView.objPedido.nombres}" class="form-control"></h:inputText>
+                        </div>
+                        <div class="col">
+                            <label for="apellidos">Ingrese sus Apellidos</label>
+                            <h:inputText id="apellidos" value="#{listadoView.objPedido.apellidos}" class="form-control"></h:inputText>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="producto">Selecione el producto que desea ordenar</label>
+                            <h:selectOneMenu id="producto" class="form-control" value="#{listadoView.idProducto}">
+                                <f:selectItems value="#{listadoView.cantidadProducots}" var="pt" 
+                                               itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>                                        
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col">
+                            <label for="cantidad">Ingrese la cantidad</label>
+                            <h:inputText id="cantidad" value="#{listadoView.objPedido.cantidad}" class="form-control"></h:inputText>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h:commandButton class="btn btn-success" action="#{listadoView.crearPedido()}" style="margin-top: 33px;margin-left: 366px;" value="CREAR PEDIDO"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </ui:composition>
+</html>

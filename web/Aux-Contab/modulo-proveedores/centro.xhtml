@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition>
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+
+            <!-- Form Element sizes -->
+            <h:form>
+                <br/>
+                <div class="container-fluid">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Guardar proveedor</h3>
+                        </div>
+                        <div class="card-body">
+                            <h:inputText class="form-control" html5:placeholder="Razon Social"
+                                         value="#{proveedoresView.objProveedor.razonSocial}"/>
+                            <br/>
+                            <h:inputText class="form-control" html5:placeholder="Ciudad"
+                                         value="#{proveedoresView.objProveedor.ciudad}"/>
+                            <br/>
+                            <h:inputText class="form-control" html5:placeholder="Calle"
+                                         value="#{proveedoresView.objProveedor.calle}"/>
+                            <br/>
+                            <h:inputText class="form-control" html5:placeholder="Zona"
+                                         value="#{proveedoresView.objProveedor.zona}"/>
+                            <br/>
+                            <center>
+                                <h:commandButton class="btn btn-success" value="Guardar proveedor"
+                                                 action="#{proveedoresView.crearProveedor()}"/>
+                            </center>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <!-- /.card -->
+            </h:form>
+
+            <!-- Main content -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Listado de Proveedores</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <h:form>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>NIT</th>
+                                                <th>Razon Social</th>
+                                                <th>Ciudad</th>
+                                                <th>Calle</th>
+                                                <th>Zona</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="#{proveedoresView.listaProveedores}" var="proveedores">
+                                                <tr>
+                                                    <td>#{proveedores.nit}</td>
+                                                    <td>
+                                                        <h:inputText value="#{proveedores.razonSocial}"></h:inputText>
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText value="#{proveedores.ciudad}"></h:inputText>
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText value="#{proveedores.calle}"></h:inputText>
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText value="#{proveedores.zona}"></h:inputText>
+                                                    </td>
+                                                    <td>
+                                                        <div class="container">
+                                                            <h:commandButton class="btn btn-danger"
+                                                                             value="Eliminar"
+                                                                             action="#{proveedoresView.eliminarProveedor(proveedores)}"/> 
+                                                        </div>
+                                                        <br></br>
+                                                        <h:commandButton class="btn btn-warning"
+                                                                         value="Actualizar"
+                                                                         action="#{proveedoresView.editarProveedor(proveedores)}"/>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Estado del pedido</th>
+                                                <th>Cantidad</th>                                                
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </tfoot>                                          
+                                    </table>                                    
+                                </h:form> 
+
+                                <!-- Tabla para exportar -->
+                                <h:form>
+                                    <table id="example" class="table" style="display: none">
+                                        <thead>
+                                            <tr>
+                                                <th>NIT</th>
+                                                <th>Razon Social</th>
+                                                <th>Ciudad</th>
+                                                <th>Calle</th>
+                                                <th>Zona</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="#{proveedoresView.listaProveedores}" var="proveedores">
+                                                <tr>
+                                                    <td>#{proveedores.nit}</td>
+                                                    <td>#{proveedores.razonSocial}</td>
+                                                    <td>#{proveedores.ciudad}</td>
+                                                    <td>#{proveedores.calle}</td>
+                                                    <td>#{proveedores.zona}</td>                                                    
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Estado del pedido</th>
+                                                <th>Cantidad</th>                                                
+                                            </tr>
+                                        </tfoot>                                          
+                                    </table>                                    
+                                </h:form>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+
+    </ui:composition>
+</html>

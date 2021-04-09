@@ -1,0 +1,21 @@
+body {
+	
+	background: url(../img/Index.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+}
+.imagen{
+	display: flex;
+	align-items: center;
+	border-radius: 100%;
+}
+
+
+
+
+
+
+
+
+

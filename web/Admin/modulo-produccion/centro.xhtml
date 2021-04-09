@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Ordenes de confección</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item text-primary">Administrador</li>
+                                <li class="breadcrumb-item active">Ordenes de confección</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- CSV Alerta -->
+            <c:if test="#{cargarArchivoView.mensaje == 1}">
+                <div class="container alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Archivo Cargado Exitosamente</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>    
+            </c:if>
+            <c:if test="#{cargarArchivoView.mensaje == 2}">
+                <div class="container alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error: </strong> Archivo sin cargar
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>           
+            </c:if>
+
+            <!-- CSV Cargar Datos -->
+            <h:form enctype="multipart/form-data">
+                <div class="container-fluid">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Cargar Archivo Externo</h3>
+                        </div>
+                        <br></br>
+                        <center><p:fileUpload value="#{cargarArchivoView.file}" mode="simple" /></center><br></br>
+                        <p:commandButton value="Enviar Datos" ajax="false" action="#{cargarArchivoView.upload()}" styleClass="p-mt-3 ui-button-outlined p-d-block"/>
+                    </div>
+                </div>
+            </h:form>
+
+            <!-- Form Element sizes -->
+            <h:form>
+                <div class="container-fluid">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Crear orden de confección</h3>
+                        </div>
+                        <div class="card-body">
+                            <h:inputText class="form-control" html5:placeholder="Nombre del producto"
+                                         value="#{produccionView.orden.producto}"/>
+                            <br/>
+                            <h:inputText class="form-control" html5:placeholder="Cantidad"
+                                         value="#{produccionView.orden.cantidad}"/>
+                            <br/>
+                            <center>
+                                <h:commandButton class="btn btn-success" value="Crear orden"
+                                                 action="#{produccionView.crearOrdenConfeccion()}"/>
+                            </center>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <!-- /.card -->
+            </h:form>
+
+            <!-- Main content -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Ordenes existentes</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <h:form>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Estado del pedido</th>
+                                                <th>Cantidad</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="#{produccionView.cantidad}" var="ordenes">
+                                                <tr>
+                                                    <td>#{ordenes.idOrdenConfeccion}</td>
+                                                    <td>#{ordenes.producto}</td>
+                                                    <td>                                                      
+                                                        <h:selectOneMenu class="form-control" value="#{ordenes.estadoPedido}">
+                                                            <f:selectItem itemLabel="........." itemValue="........."></f:selectItem>
+                                                            <f:selectItem itemLabel="Pendiente" itemValue="Pendiente"></f:selectItem>
+                                                            <f:selectItem itemLabel="En proceso" itemValue="En proceso"></f:selectItem>
+                                                            <f:selectItem itemLabel="Finalizado" itemValue="Finalizado"></f:selectItem>
+                                                        </h:selectOneMenu>
+                                                    </td>
+                                                    <td>#{ordenes.cantidad}</td>
+                                                    <td>
+                                                        <h:commandButton class="btn btn-danger"
+                                                                         value="Eliminar"
+                                                                         action="#{produccionView.eliminarOrdenConfeccion(ordenes)}"/>&nbsp;&nbsp;
+                                                        <h:commandButton class="btn btn-warning"
+                                                                         value="Actualizar"
+                                                                         action="#{produccionView.editarOrdenConfeccion(ordenes)}"/>
+                                                    </td>                                                    
+                                                </tr>
+                                            </c:forEach>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Estado del pedido</th>
+                                                <th>Cantidad</th>                                                
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </tfoot>                                          
+                                    </table>                                    
+                                </h:form>
+                                <!-- Tabla para exportar -->
+                                <h:form>
+                                    <table id="example" class="table" style="display: none">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Estado del pedido</th>
+                                                <th>Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="#{produccionView.cantidad}" var="ordenes">
+                                                <tr>
+                                                    <td>#{ordenes.idOrdenConfeccion}</td>
+                                                    <td>#{ordenes.producto}</td>
+                                                    <td>#{ordenes.estadoPedido}</td>
+                                                    <td>#{ordenes.cantidad}</td>                                                                                                      
+                                                </tr>
+                                            </c:forEach>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Estado del pedido</th>
+                                                <th>Cantidad</th>                                                
+                                            </tr>
+                                        </tfoot>                                          
+                                    </table>                                    
+                                </h:form>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+    </ui:composition>
+</html>

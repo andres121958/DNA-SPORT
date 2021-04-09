@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+    <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+        <title>DNA SPORT</title>
+        <link rel="icon" href="#{request.contextPath}/dist/img/dna.PNG"/>
+        <link rel="stylesheet" href="#{request.contextPath}/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/dist/css/index.css"/>
+
+    </h:head>
+    <h:body>
+        <!--Nav superior-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" 
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">DNA SPORT</a>
+                <ul class="container d-flex justify-content-around navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/index.xhtml">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" p-2 bd-highlight nav-link" href="#{request.contextPath}/qs.xhtml">Quienes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/comentarios.xhtml">Comentarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/registrarse.xhtml">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="p-2 bd-highlight nav-link" href="#{request.contextPath}/login.xhtml">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav><br/>
+        <center><img src="#{request.contextPath}/dist/img/dna.PNG" class="imagen img-responsive"/></center><br/>
+
+        <!--Barra de busqueda-->
+        <form class="container form-inline justify-content-center">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" style="width: 500px;" aria-label="Buscar"/>
+            <button class="btn btn-dark" type="submit">Buscar</button>
+        </form>		
+        <br/>
+        <!--Segundo Nav-->
+        <nav class="container navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" 
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="container d-flex justify-content-around navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="p-2 bd-highlight nav-link" href="index2.xhtml">Hombre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" p-2 bd-highlight nav-link" href="index3.xhtml">Mujer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="p-2 bd-highlight nav-link" href="index4.xhtml">Niños</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="p-2 bd-highlight nav-link" href="index5.xhtml">Marcas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav><br/>
+
+        <!--Cards primera Fila-->
+        <section class="container">
+            <div class="row">
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Licras_Essentials.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Licras Essentials</h5>
+                            <p class="card-text">Leggins Mujer, 3 rayas blanco/negro</p><br/>
+                            <a href="#" class="btn btn-danger">$ 69.900</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Chaqueta.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Chaqueta Deportiva Gris</h5>
+                            <p class="card-text">Chaqueta gris OFFCORSS, chaqueta hombre.</p>
+                            <a href="#" class="btn btn-danger">$ 68.700</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Diadora.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Pantalón Diadora Mujer</h5>
+                            <p class="card-text">Pantalon, mujer color verde.</p><br/>
+                            <a href="#" class="btn btn-danger">$ 80.000</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Leggins.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Leggins deportivo contol abdomen</h5>
+                            <p class="card-text">Leggins, mujer color negro.</p><br/>
+                            <a href="#" class="btn btn-danger">$ 60.000</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Cards 2da Fila!-->
+                <div class="w-100"></div><br/>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Danfive.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Top deportivo Danfive para niña</h5>
+                            <p class="card-text">Top deportivo, niña completo.</p><br/>
+                            <a href="#" class="btn btn-danger">$ 50.000</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Tiro.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Sudadera  de tipo Tiro para hombre</h5>
+                            <p class="card-text">Sudadera, hombre color negro-blanco.</p>
+                            <a href="#" class="btn btn-danger">$ 120.000</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Rayas.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Camiseta 3 rayas tipo essentials</h5>
+                            <p class="card-text">Camiseta, hombre color blanco-negro.</p>
+                            <a href="#" class="btn btn-danger">$ 70.000</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Entry.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Sudadera entry</h5><br/>
+                            <p class="card-text">Sudadera, hombre color negro-azul.</p>
+                            <a href="#" class="btn btn-danger">$ 90.000</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Cards 3ra Fila-->
+                <div class="w-100"></div><br/>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Jogger.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Conjunto jogger estampado</h5>
+                            <p class="card-text">Jogger, niños estampado.</p><br/>
+                            <a href="#" class="btn btn-danger">$ 85.000</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Pantaloneta.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Shorts Heat.rdy</h5><br/>
+                            <p class="card-text">Shorts, hombre color negro.</p><br/>
+                            <a href="#" class="btn btn-danger">$ 65.000</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Capucha.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Chaqueta deportiva con capucha</h5>
+                            <p class="card-text">Chaqueta, hombre color negro-blanco-azul.</p>
+                            <a href="#" class="btn btn-danger">$ 85.000</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="card h-100 text-white bg-dark mb-3">
+                        <img src="#{request.contextPath}/dist/img/Catálogo/Football.jpg"  class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Conjunto Football</h5><br/>
+                            <p class="card-text">Conjunto, niño color verde-negro.</p>
+                            <a href="#" class="btn btn-danger">$ 65.000</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+
+        <!--Píe de Pagina!-->
+        <nav class="navbar navbar-dark bg-dark">
+            <h2 class="text-white">Siguenos en nuestras redes sociales:</h2><br/>
+            <a class="navbar-brand" href="https://twitter.com/explore">
+                <img src="#{request.contextPath}/dist/img/Twitter.png" width="70" height="50" alt="" loading="lazy"/>
+            </a>
+            <a class="navbar-brand" href="https://www.facebook.com/DNA-SPORT-103126241436545">
+                <img src="#{request.contextPath}/dist/img/Facebook.svg" width="70" height="50" alt="" loading="lazy"/>
+            </a>
+            <a class="navbar-brand" href="https://accounts.google.com/ServiceLogin?service=mailpassive=truerm=falsecontinue=https://mail.google.com/mail/ss=1scc=1ltmpl=defaultltmplcache=2emr=1osid=1#">
+                <img src="#{request.contextPath}/dist/img/Gmail.svg" width="70" height="60" alt="" loading="lazy"/>
+            </a>
+        </nav>
+        <script type="text/javascript" src="#{request.contextPath}/dist/js/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/dist/js/bootstrap.min.js"></script>
+
+    </h:body>
+</html>
+

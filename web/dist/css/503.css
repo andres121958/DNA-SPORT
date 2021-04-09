@@ -1,0 +1,33 @@
+body{
+	background:url(../images/deporte2.jpg);
+    background-size: cover;
+	margin:0;
+	padding:0;
+	font-family:  "montserrat",sans-serif;
+	min-height:100vh;
+    color: #;
+}
+ .container{
+	width:100%;
+	position:absolute;
+	top:50%;
+	transform: translatey(-50%);
+	text-align:center;
+	color: white;
+ }
+ .container h1{
+	 
+	 font-size:160px;
+	 margin:0;
+	 font-weight:900;
+	 letter-spacing:20px;
+	 color: white;
+	 
+	 animation-duration: 2.5s;
+	 animation-fill-mode:both:
+     animation-interation-count:infinite;
+
+}
+	
+}	
+	
