@@ -9,12 +9,24 @@ import edu.app.facade.InsumosFacadeLocal;
 import edu.app.facade.PedidoFacadeLocal;
 import edu.app.facade.ProductoFacadeLocal;
 import java.io.Serializable;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import org.primefaces.model.charts.ChartData;
+import org.primefaces.model.charts.axes.cartesian.CartesianScales;
+import org.primefaces.model.charts.axes.cartesian.linear.CartesianLinearAxes;
+import org.primefaces.model.charts.line.LineChartDataSet;
+import org.primefaces.model.charts.line.LineChartModel;
+import org.primefaces.model.charts.line.LineChartOptions;
+import org.primefaces.model.charts.optionconfig.title.Title;
+import org.primefaces.model.charts.pie.PieChartDataSet;
+import org.primefaces.model.charts.pie.PieChartModel;
 
 @Named(value = "listadoView")
 @ViewScoped
@@ -42,12 +54,17 @@ public class ListadoView implements Serializable {
     private ArrayList<Producto> cantidadProducots = new ArrayList<>();
 
     private String validacionPedido = "";
+    private LineChartModel cartesian = new LineChartModel();
+    private PieChartModel graficoVentas = new PieChartModel();
+    private Color color = new Color();
 
     @PostConstruct
     public void listarInsumos() {
         try {
             cantidadProducots.addAll(productoFacadeLocal.findAll());
             listaPedido.addAll(pedidoFacadeLocal.findAll());
+            crearCartesianLinerModel();
+            crearGraficoVentas();
         } catch (Exception e) {
             System.out.println("edu.app.controlador.ListadoView.listarInsumos() " + e.getMessage());
         }
@@ -78,13 +95,117 @@ public class ListadoView implements Serializable {
             validacionPedido = "El pedido no se pudo eliminar";
         }
     }
-    
-    public void editarPedido(Pedido pedidos){
+
+    public void editarPedido(Pedido pedidos) {
         try {
             pedidoFacadeLocal.edit(pedidos);
             System.out.println(pedidos.getProductoCodigoProducto());
         } catch (Exception e) {
             System.out.println("edu.app.controlador.ListadoView.editarPedido() " + e.getMessage());
+        }
+    }
+
+    public void crearCartesianLinerModel() {
+        try {
+            cartesian = new LineChartModel();
+            ChartData datos = new ChartData();
+
+//            Cantidades grafiica 1
+            LineChartDataSet dataSet = new LineChartDataSet();
+            List<Object> listaCarrito = new ArrayList<>();
+            listaCarrito.add(12);
+            listaCarrito.add(51);
+            listaCarrito.add(1);
+            listaCarrito.add(6);
+            listaCarrito.add(14);
+
+            dataSet.setData(listaCarrito);
+            dataSet.setLabel("Ventas");
+            dataSet.setYaxisID("left-y-axis");
+
+//            cantidades grafica 2
+            LineChartDataSet dataSet2 = new LineChartDataSet();
+            List<Object> listaCarrito2 = new ArrayList<>();
+            listaCarrito2.add(2);
+            listaCarrito2.add(5);
+            listaCarrito2.add(21);
+            listaCarrito2.add(16);
+            listaCarrito2.add(24);
+
+            dataSet2.setData(listaCarrito2);
+            dataSet2.setLabel(" ");
+            dataSet2.setYaxisID("right-y-axis");
+
+            datos.addChartDataSet(dataSet);
+            datos.addChartDataSet(dataSet2);
+
+//            labels
+            List<String> labels = new ArrayList<>();
+            labels.add("Pepsi");
+            labels.add("Cocacola");
+            labels.add("Mojarra");
+            labels.add("Empanada");
+            labels.add("Carne Res");
+
+            datos.setLabels(labels);
+            cartesian.setData(datos);
+
+            //Options
+            LineChartOptions options = new LineChartOptions();
+            CartesianScales cScales = new CartesianScales();
+            CartesianLinearAxes linearAxes = new CartesianLinearAxes();
+            linearAxes.setId("left-y-axis");
+            linearAxes.setPosition("left");
+            CartesianLinearAxes linearAxes2 = new CartesianLinearAxes();
+            linearAxes2.setId("right-y-axis");
+            linearAxes2.setPosition("right");
+
+            cScales.addYAxesData(linearAxes);
+            cScales.addYAxesData(linearAxes2);
+            options.setScales(cScales);
+
+            Title title = new Title();
+            title.setDisplay(true);
+            title.setText("Top Productos");
+            options.setTitle(title);
+
+            cartesian.setOptions(options);
+
+        } catch (Exception e) {
+            System.out.println("edu.app.controlador.OrdenView.crearCartesianLinerModel()" + e.getMessage());
+        }
+    }
+
+    public void crearGraficoVentas() {
+        try {
+            graficoVentas = new PieChartModel();
+            ChartData informacion = new ChartData();
+            PieChartDataSet dataSet = new PieChartDataSet();
+            List<Number> valores = new ArrayList<>();
+            ArrayList<Pedido> listadePedidos = new ArrayList<>();
+            listadePedidos.addAll(pedidoFacadeLocal.findAll());
+            for (int i = 0; i < listadePedidos.size(); i++) {
+                System.out.println("VALOR: " + listadePedidos.get(i));
+                valores.add(parseInt(listadePedidos.get(i).getCantidad()));
+            }
+            dataSet.setData(valores);
+            List<String> bgColors = new ArrayList<>();
+            bgColors.add("rgb(255, 99, 132)");
+            bgColors.add("rgb(54, 162, 235)");
+            bgColors.add("rgb(246, 255, 51)");
+            bgColors.add("rgb(243, 51, 255)");
+            bgColors.add("rgb(107, 255, 50)");
+            dataSet.setBackgroundColor(bgColors);
+            informacion.addChartDataSet(dataSet);
+            List<String> labels = new ArrayList<>();
+            for (int i = 0; i < listadePedidos.size(); i++) {
+                System.out.println("NOMBRE:" + listadePedidos.get(i).getNombres());
+                labels.add(listadePedidos.get(i).getNombres());
+            }
+            informacion.setLabels(labels);
+            graficoVentas.setData(informacion);
+        } catch (Exception e) {
+            System.out.println("ERROR durante la impresion: " + e.getMessage());
         }
     }
 
@@ -159,5 +280,21 @@ public class ListadoView implements Serializable {
     public void setValidacionPedido(String validacionPedido) {
         this.validacionPedido = validacionPedido;
     }
-    
+
+    public PieChartModel getGraficoVentas() {
+        return graficoVentas;
+    }
+
+    public void setGraficoVentas(PieChartModel graficoVentas) {
+        this.graficoVentas = graficoVentas;
+    }
+
+    public LineChartModel getCartesian() {
+        return cartesian;
+    }
+
+    public void setCartesian(LineChartModel cartesian) {
+        this.cartesian = cartesian;
+    }
+
 }
