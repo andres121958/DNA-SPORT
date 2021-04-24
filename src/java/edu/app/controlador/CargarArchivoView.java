@@ -13,7 +13,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import edu.app.entity.OrdenConfeccion;
 import java.io.InputStreamReader;
-import org.primefaces.model.UploadedFile;
+import org.primefaces.model.file.UploadedFile;
 import edu.app.entity.Usuario;
 
 @ManagedBean
@@ -72,7 +72,7 @@ public class CargarArchivoView implements Serializable {
         if (file != null) {
             try {
                 CsvReader leerOrdenes;
-                leerOrdenes = new CsvReader(new InputStreamReader(file.getInputstream()));
+                leerOrdenes = new CsvReader(new InputStreamReader(file.getInputStream()));
 
                 leerOrdenes.readHeaders();
                 while (leerOrdenes.readRecord()) {
