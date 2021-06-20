@@ -5,10 +5,11 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="dnasport"/>
-        <property name="User" value=""/>
-        <property name="Password" value=""/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/dnasport?zeroDateTimeBehavior=convertToNull"/>
+        <property name="User" value="juansebastiancely"/>
+        <property name="Password" value="2448"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/dnasport?zeroDataTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jndi_DnaSport" object-type="user" pool-name="mysql_dnasport_juansebastiancelyPool"/>
 </resources>
+
