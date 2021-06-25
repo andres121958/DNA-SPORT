@@ -32,9 +32,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "OrdenConfeccion.findAll", query = "SELECT o FROM OrdenConfeccion o")
     , @NamedQuery(name = "OrdenConfeccion.findByIdOrdenConfeccion", query = "SELECT o FROM OrdenConfeccion o WHERE o.idOrdenConfeccion = :idOrdenConfeccion")
-    , @NamedQuery(name = "OrdenConfeccion.findByProducto", query = "SELECT o FROM OrdenConfeccion o WHERE o.producto = :producto")
     , @NamedQuery(name = "OrdenConfeccion.findByEstadoPedido", query = "SELECT o FROM OrdenConfeccion o WHERE o.estadoPedido = :estadoPedido")
-    , @NamedQuery(name = "OrdenConfeccion.findByCantidad", query = "SELECT o FROM OrdenConfeccion o WHERE o.cantidad = :cantidad")})
+    , @NamedQuery(name = "OrdenConfeccion.findByCantidad", query = "SELECT o FROM OrdenConfeccion o WHERE o.cantidad = :cantidad")
+    , @NamedQuery(name = "OrdenConfeccion.findByNombres", query = "SELECT o FROM OrdenConfeccion o WHERE o.nombres = :nombres")
+    , @NamedQuery(name = "OrdenConfeccion.findByApellidos", query = "SELECT o FROM OrdenConfeccion o WHERE o.apellidos = :apellidos")})
 public class OrdenConfeccion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,21 +44,25 @@ public class OrdenConfeccion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_orden_confeccion")
     private Integer idOrdenConfeccion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "producto")
-    private String producto;
     @Size(max = 30)
     @Column(name = "estado_pedido")
     private String estadoPedido;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 15)
+    @Size(min = 1, max = 30)
     @Column(name = "cantidad")
     private String cantidad;
+    @Size(max = 45)
+    @Column(name = "nombres")
+    private String nombres;
+    @Size(max = 45)
+    @Column(name = "apellidos")
+    private String apellidos;
+    @JoinColumn(name = "producto_codigo_producto", referencedColumnName = "codigo_producto")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Producto productoCodigoProducto;
     @JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
 
     public OrdenConfeccion() {
@@ -67,9 +72,8 @@ public class OrdenConfeccion implements Serializable {
         this.idOrdenConfeccion = idOrdenConfeccion;
     }
 
-    public OrdenConfeccion(Integer idOrdenConfeccion, String producto, String cantidad) {
+    public OrdenConfeccion(Integer idOrdenConfeccion, String cantidad) {
         this.idOrdenConfeccion = idOrdenConfeccion;
-        this.producto = producto;
         this.cantidad = cantidad;
     }
 
@@ -79,14 +83,6 @@ public class OrdenConfeccion implements Serializable {
 
     public void setIdOrdenConfeccion(Integer idOrdenConfeccion) {
         this.idOrdenConfeccion = idOrdenConfeccion;
-    }
-
-    public String getProducto() {
-        return producto;
-    }
-
-    public void setProducto(String producto) {
-        this.producto = producto;
     }
 
     public String getEstadoPedido() {
@@ -103,6 +99,30 @@ public class OrdenConfeccion implements Serializable {
 
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public Producto getProductoCodigoProducto() {
+        return productoCodigoProducto;
+    }
+
+    public void setProductoCodigoProducto(Producto productoCodigoProducto) {
+        this.productoCodigoProducto = productoCodigoProducto;
     }
 
     public Usuario getUsuarioIdUsuario() {

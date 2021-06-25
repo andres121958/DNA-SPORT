@@ -29,5 +29,7 @@ public interface OrdenConfeccionFacadeLocal {
     List<OrdenConfeccion> findRange(int[] range);
 
     int count();
+
+    public List<OrdenConfeccion> TablaAdmin();
     
 }

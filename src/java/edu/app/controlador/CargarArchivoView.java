@@ -77,8 +77,6 @@ public class CargarArchivoView implements Serializable {
                 leerOrdenes.readHeaders();
                 while (leerOrdenes.readRecord()) {
                     ordenes = new OrdenConfeccion();
-
-                    ordenes.setProducto(leerOrdenes.get(0));
                     ordenes.setEstadoPedido(leerOrdenes.get(1));
                     ordenes.setCantidad(leerOrdenes.get(2));
                     ordenes.setUsuarioIdUsuario(usuarioAdmin);

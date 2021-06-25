@@ -71,7 +71,7 @@ public class Producto implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Usuario> usuarioCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoCodigoProducto", fetch = FetchType.LAZY)
-    private Collection<Pedido> pedidoCollection;
+    private Collection<OrdenConfeccion> ordenConfeccionCollection;
     @JoinColumn(name = "color_id_color", referencedColumnName = "id_color")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Color colorIdColor;
@@ -141,12 +141,12 @@ public class Producto implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Pedido> getPedidoCollection() {
-        return pedidoCollection;
+    public Collection<OrdenConfeccion> getOrdenConfeccionCollection() {
+        return ordenConfeccionCollection;
     }
 
-    public void setPedidoCollection(Collection<Pedido> pedidoCollection) {
-        this.pedidoCollection = pedidoCollection;
+    public void setOrdenConfeccionCollection(Collection<OrdenConfeccion> ordenConfeccionCollection) {
+        this.ordenConfeccionCollection = ordenConfeccionCollection;
     }
 
     public Color getColorIdColor() {

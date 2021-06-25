@@ -29,7 +29,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-
+    
     public Usuario verificarUsuario(String correoIn, String contraseniaIn) {
         try {
             Query consul = em.createQuery("SELECT u FROM Usuario u WHERE u.contrasenia = :contraseniaIn AND u.correo = :correoIn");

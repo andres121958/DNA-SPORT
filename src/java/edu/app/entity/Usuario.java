@@ -109,11 +109,9 @@ public class Usuario implements Serializable {
     private Collection<Rol> rolCollection;
     @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
     private Collection<Producto> productoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdUsuario", fetch = FetchType.LAZY)
-    private Collection<Pedido> pedidoCollection;
     @OneToMany(mappedBy = "usuarioIdUsuario", fetch = FetchType.LAZY)
     private Collection<Proveedor> proveedorCollection;
-    @OneToMany(mappedBy = "usuarioIdUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdUsuario", fetch = FetchType.LAZY)
     private Collection<OrdenConfeccion> ordenConfeccionCollection;
 
     public Usuario() {
@@ -251,15 +249,6 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Pedido> getPedidoCollection() {
-        return pedidoCollection;
-    }
-
-    public void setPedidoCollection(Collection<Pedido> pedidoCollection) {
-        this.pedidoCollection = pedidoCollection;
-    }
-
-    @XmlTransient
     public Collection<Proveedor> getProveedorCollection() {
         return proveedorCollection;
     }
@@ -301,5 +290,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "edu.app.entity.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-
+    
 }

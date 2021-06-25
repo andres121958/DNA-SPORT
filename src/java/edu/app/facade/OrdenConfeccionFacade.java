@@ -6,9 +6,11 @@
 package edu.app.facade;
 
 import edu.app.entity.OrdenConfeccion;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,14 @@ public class OrdenConfeccionFacade extends AbstractFacade<OrdenConfeccion> imple
         super(OrdenConfeccion.class);
     }
     
+    public List<OrdenConfeccion> TablaAdmin(){
+        try {
+            Query consul = em.createQuery("SELECT o FROM OrdenConfeccion o WHERE o.estadoPedido = 'En proceso'"); 
+            List<OrdenConfeccion>listado = consul.getResultList();
+            return listado;
+        } catch (Exception e) {
+            System.out.println("edu.app.facade.OrdenConfeccionFacade.TablaAdmin()" + e.getMessage()); 
+            return null;
+        }
+    }
 }

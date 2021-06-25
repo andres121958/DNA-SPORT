@@ -36,70 +36,21 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>PRODUCTO</th>
-                                    <th>NOMBRES</th>
-                                    <th>APELLIDOS</th>
-                                    <th>CANTIDAD</th>
-                                    <th>ACCIONES</th>
+                                    <th>Producto</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Estado del pedido</th>
+                                    <th>Cantidad</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="#{listadoView.listaPedido}" var="pedidos">
+                                <c:forEach items="#{produccionView.cantidad}" var="pedidos">
                                     <tr>
-                                        <td>#{pedidos.idPedido}</td>
-                                        <f:selectItems value="#{listadoView.cantidadProducots}" var="pt" 
+                                        <td>#{pedidos.idOrdenConfeccion}</td>
+                                        <f:selectItems value="#{produccionView.cantidadProducots}" var="pt" 
                                                        itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>
-                                        <c:if test="#{produccionView.orden.producto}#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=1 ]'}">
-                                            <td>Pantalón Diadora Mujer</td>
-                                        </c:if>
-                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=2 ]'}">
-                                            <td>Licras Essentials</td>
-                                        </c:if> 
-                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=3 ]'}">
-                                            <td>Chaqueta Deportiva Gris</td>
-                                        </c:if>
-                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=4 ]'}">
-                                            <td>Leggins deportivo contol abdomen</td>
-                                        </c:if>
-                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=5 ]'}">
-                                            <td>Top deportivo Danfive para niña</td>
-                                        </c:if>
-                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=6 ]'}">
-                                            <td>Sudadera de tipo Tiro para hombre</td>
-                                        </c:if>
-                                        <td><h:inputText value="#{pedidos.nombres}"></h:inputText></td>
-                                        <td><h:inputText value="#{pedidos.apellidos}"></h:inputText></td>
-                                        <td><h:inputText value="#{pedidos.cantidad}"></h:inputText></td>
-                                        <td>
-                                            <h:commandButton class="btn btn-warning" action="#{listadoView.editarPedido(pedidos)}" value="ACTUALIZAR"></h:commandButton>
-                                            <h:commandButton class="btn btn-danger" action="#{listadoView.eliminarPedido(pedidos)}" value="ELIMINAR"></h:commandButton>
-                                            <h:commandButton class="btn btn-success" value="Crear orden"
-                                                             action="#{produccionView.crearOrdenConfeccion()}"/>
-                                        </td>
-                                    </tr>
-                                </c:forEach> 
-                            </tbody>
-                        </table>
-                    </h:form>
-                    <!-- Tabla para Exportar-->
-                    <h:form>
-                        <table id="example" class="table" style="display: none">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>PRODUCTO</th>
-                                    <th>NOMBRES</th>
-                                    <th>APELLIDOS</th>
-                                    <th>CANTIDAD</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="#{listadoView.listaPedido}" var="pedidos">
-                                    <tr>
-                                        <td>#{pedidos.idPedido}</td>
-                                        <f:selectItems value="#{listadoView.cantidadProducots}" var="pt" 
-                                                       itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>
-                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=1 ]'}">
+                                        <c:if test="#{produccionView.orden.productoCodigoProducto}#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=1 ]'}">
                                             <td>Pantalón Diadora Mujer</td>
                                         </c:if>
                                         <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=2 ]'}">
@@ -119,7 +70,65 @@
                                         </c:if>
                                         <td>#{pedidos.nombres}</td>
                                         <td>#{pedidos.apellidos}</td>
+                                        <td>                                                      
+                                            <h:selectOneMenu class="form-control" value="#{pedidos.estadoPedido}">
+                                                <f:selectItem itemLabel="........." itemValue="........."></f:selectItem>
+                                                <f:selectItem itemLabel="En proceso" itemValue="En proceso"></f:selectItem>
+                                                <f:selectItem itemLabel="Cancelado" itemValue="Cancelado"></f:selectItem>
+                                            </h:selectOneMenu>
+                                        </td>
                                         <td>#{pedidos.cantidad}</td>
+                                        <td>
+                                            <h:commandButton class="btn btn-warning" action="#{produccionView.editarOrdenConfeccion(ordenes)}" value="Actualizar"></h:commandButton>&nbsp;&nbsp;
+                                            <h:commandButton class="btn btn-danger" action="#{produccionView.editarOrdenConfeccion(ordenes)}" value="Eliminar"></h:commandButton>
+                                        </td>
+                                    </tr>
+                                </c:forEach> 
+                            </tbody>
+                        </table>
+                    </h:form>
+                    <!-- Tabla para Exportar-->
+                    <h:form>
+                        <table id="example" class="table" style="display: none">
+                            <thead class="thead-dark">
+                                <tr>
+                                   <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Estado del pedido</th>
+                                    <th>Cantidad</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="#{produccionView.cantidad}" var="pedidos">
+                                    <tr>
+                                        <td>#{pedidos.idOrdenConfeccion}</td>
+                                        <f:selectItems value="#{produccionView.cantidadProducots}" var="pt" 
+                                                       itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>
+                                        <c:if test="#{produccionView.orden.productoCodigoProducto}#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=1 ]'}">
+                                            <td>Pantalón Diadora Mujer</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=2 ]'}">
+                                            <td>Licras Essentials</td>
+                                        </c:if> 
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=3 ]'}">
+                                            <td>Chaqueta Deportiva Gris</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=4 ]'}">
+                                            <td>Leggins deportivo contol abdomen</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=5 ]'}">
+                                            <td>Top deportivo Danfive para niña</td>
+                                        </c:if>
+                                        <c:if test="#{pedidos.productoCodigoProducto.toString() == 'edu.app.entity.Producto[ codigoProducto=6 ]'}">
+                                            <td>Sudadera de tipo Tiro para hombre</td>
+                                        </c:if>
+                                        <td>#{pedidos.nombres}</td>
+                                        <td>#{pedidos.apellidos}</td>
+                                        <td>#{pedidos.estadoPedido}</td>
+                                        <td>#{pedidos.cantidad}</td>   
                                     </tr>
                                 </c:forEach> 
                             </tbody>

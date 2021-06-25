@@ -13,34 +13,34 @@
                     <div class="row">
                         <div class="col">
                             <label for="nombres">Ingrese sus Nombres</label>
-                            <h:inputText id="nombres" value="#{listadoView.objPedido.nombres}" class="form-control"></h:inputText>
+                            <h:inputText id="nombres" value="#{produccionView.orden.nombres}" class="form-control"></h:inputText>
                         </div>
                         <div class="col">
                             <label for="apellidos">Ingrese sus Apellidos</label>
-                            <h:inputText id="apellidos" value="#{listadoView.objPedido.apellidos}" class="form-control"></h:inputText>
+                            <h:inputText id="apellidos" value="#{produccionView.orden.apellidos}" class="form-control"></h:inputText>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="producto">Selecione el producto que desea ordenar</label>
-                            <h:selectOneMenu id="producto" class="form-control" value="#{listadoView.idProducto}">
-                                <f:selectItems value="#{listadoView.cantidadProducots}" var="pt" 
+                            <label for="producto">Seleccione el producto que desea ordenar</label>
+                            <h:selectOneMenu id="producto" class="form-control" value="#{produccionView.idProducto}">
+                                <f:selectItems value="#{produccionView.cantidadProducots}" var="pt" 
                                                itemLabel="#{pt.nombre}" itemValue="#{pt.codigoProducto}"></f:selectItems>                                        
                             </h:selectOneMenu>
                         </div>
                         <div class="col">
                             <label for="cantidad">Ingrese la cantidad</label>
-                            <h:inputText id="cantidad" value="#{listadoView.objPedido.cantidad}" class="form-control"></h:inputText>
+                            <h:inputText id="cantidad" value="#{produccionView.orden.cantidad}" class="form-control"></h:inputText>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <h:commandButton class="btn btn-success" action="#{listadoView.crearPedido()}" style="margin-top: 33px;margin-left: 366px;" value="CREAR PEDIDO"></h:commandButton>
+                            <h:commandButton class="btn btn-success" action="#{produccionView.crearOrdenConfeccion()}" style="margin-top: 33px;margin-left: 366px;" value="CREAR PEDIDO"></h:commandButton>
                         </div>
                     </div>
                 </h:form>
             </div>
-            <h1 style="margin-left: 322px; margin-top: 20px;">PEDIDOS REALIZADOS</h1>
+            <!--<h1 style="margin-left: 322px; margin-top: 20px;">PEDIDOS REALIZADOS</h1>
             <div class="container" style="width: 300px; margin-left: 500px;">
                 <table class="table table-bordered">
                     <thead class="thead thead-dark">
@@ -49,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="#{listadoView.pedidosUsuarioId}" var="cantidad">
+                        <c:forEach items="#{produccionView.pedidosUsuarioId}" var="cantidad">
                             <tr>
                                 <td>#{cantidad}</td>
                             </tr>
@@ -66,14 +66,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="#{listadoView.listaProductoUsuarioId}" var="producto">
+                        <c:forEach items="#{produccionView.listaProductoUsuarioId}" var="producto">
                             <tr>
                                 <td>#{producto}</td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
-            </div>
+            </div>-->
         </div>
     </ui:composition>
 </html>
