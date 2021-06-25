@@ -11,6 +11,7 @@ import edu.app.facade.ProductoFacadeLocal;
 import java.io.Serializable;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -52,6 +53,9 @@ public class ListadoView implements Serializable {
     private Color objColor = new Color();
     private ArrayList<Color> listaColores = new ArrayList<>();
     private ArrayList<Producto> cantidadProducots = new ArrayList<>();
+    private ArrayList<String> pedidosUsuarioId = new ArrayList<>();
+    private ArrayList<String> listaProductoUsuarioId = new ArrayList<>();
+    private ArrayList<String> productosIdUsuario = new ArrayList<>();
 
     private String validacionPedido = "";
     private LineChartModel cartesian = new LineChartModel();
@@ -63,6 +67,46 @@ public class ListadoView implements Serializable {
         try {
             cantidadProducots.addAll(productoFacadeLocal.findAll());
             listaPedido.addAll(pedidoFacadeLocal.findAll());
+            //Inicio de mis pruebas(Juan)
+            String verificadorid = usuarioSesion.getIngresar().toString();
+            for (int i = 0; i <= listaPedido.size(); i++) {
+                if (listaPedido.get(i).getUsuarioIdUsuario().toString().equalsIgnoreCase(verificadorid)) {
+                    System.out.println("Cantidad:" + listaPedido.get(i).getCantidad());
+                    pedidosUsuarioId.add(listaPedido.get(i).getCantidad());
+                    String valorOriginal = listaPedido.get(i).getProductoCodigoProducto().toString();
+                    String[] valorSeparado = valorOriginal.split("=");
+                    String modificado1 = valorSeparado[1].replace("]", "");
+                    String modificado2 = modificado1.replace(" ", "");
+                    productosIdUsuario.add(modificado2);
+                    System.out.println("VALOR MODIFICADO: " + modificado2);
+                    switch(modificado2){
+                        case "1":
+                            listaProductoUsuarioId.add("Pantalón Diadora Mujer");
+                            break;
+                        case "2":
+                            listaProductoUsuarioId.add("Licras Essentials");
+                            break;
+                        case "3":
+                            listaProductoUsuarioId.add("Chaqueta Deportiva Gris");
+                            break;
+                        case "4":
+                            listaProductoUsuarioId.add("Leggins deportivo control abdomen");
+                            break;
+                        case "5":
+                            listaProductoUsuarioId.add("Top deportivo Danfive para niña");
+                            break;
+                        case "6":
+                            listaProductoUsuarioId.add("Sudadera de tipo Tiro para hombre");
+                            break;
+                        default:
+                            System.out.println("Hubo un problema");
+                            break;
+                    }
+                } else {
+                    System.out.println("No es el usuario actual");
+                }
+            }
+            //Fin de mis pruebas(Juan)
             crearCartesianLinerModel();
             crearGraficoVentas();
         } catch (Exception e) {
@@ -295,6 +339,30 @@ public class ListadoView implements Serializable {
 
     public void setCartesian(LineChartModel cartesian) {
         this.cartesian = cartesian;
+    }
+
+    public ArrayList<String> getPedidosUsuarioId() {
+        return pedidosUsuarioId;
+    }
+
+    public void setPedidosUsuarioId(ArrayList<String> pedidosUsuarioId) {
+        this.pedidosUsuarioId = pedidosUsuarioId;
+    }
+
+    public ArrayList<String> getListaProductoUsuarioId() {
+        return listaProductoUsuarioId;
+    }
+
+    public void setListaProductoUsuarioId(ArrayList<String> listaProductoUsuarioId) {
+        this.listaProductoUsuarioId = listaProductoUsuarioId;
+    }
+
+    public ArrayList<String> getProductosIdUsuario() {
+        return productosIdUsuario;
+    }
+
+    public void setProductosIdUsuario(ArrayList<String> productosIdUsuario) {
+        this.productosIdUsuario = productosIdUsuario;
     }
 
 }

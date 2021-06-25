@@ -40,6 +40,40 @@
                     </div>
                 </h:form>
             </div>
+            <h1 style="margin-left: 322px; margin-top: 20px;">PEDIDOS REALIZADOS</h1>
+            <div class="container" style="width: 300px; margin-left: 500px;">
+                <table class="table table-bordered">
+                    <thead class="thead thead-dark">
+                        <tr>
+                            <th>Cantidades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="#{listadoView.pedidosUsuarioId}" var="cantidad">
+                            <tr>
+                                <td>#{cantidad}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="container" style="width: 300px; margin-left: 216px; margin-top: -312px">
+                <table class="table table-bordered">
+                    <thead class="thead thead-dark">
+                        <tr>
+                            <th>Productos solicitados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="#{listadoView.listaProductoUsuarioId}" var="producto">
+                            <tr>
+                                <td>#{producto}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </ui:composition>
 </html>
